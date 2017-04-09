@@ -1,0 +1,3 @@
+index.js - our controller: the top most thing
+cell.js - model
+conway.js - model 
