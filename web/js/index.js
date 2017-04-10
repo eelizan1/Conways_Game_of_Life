@@ -1,6 +1,5 @@
 var interval;
 
-
 function go(game) {
   // the frequency of execution
   // what to do and at rate
