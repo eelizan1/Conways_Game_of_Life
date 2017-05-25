@@ -1,7 +1,10 @@
-// two main objects - the game and the cells
+/*
+  THE GRID CLASS
+  TO PROCESS AND RENDER THE GRID
+*/
 
-// the grid object
-function Conway (size) {
+// the grid object constructor
+function Grid (size) {
   // size of the grid
   this.size = size;
   this.grid = this.generateGrid(size);
@@ -14,7 +17,7 @@ function Conway (size) {
   GRID PROTOTYPES (BAG OF TOOLS)
 */
 
-Conway.prototype.generateGrid = function(size) {
+Grid.prototype.generateGrid = function(size) {
   // create a 2D array
   var grid = [];
   // for grid
@@ -33,7 +36,7 @@ Conway.prototype.generateGrid = function(size) {
 };
 
 // render the generated grid to the page *react render() here
-Conway.prototype.renderGrid = function() {
+Grid.prototype.renderGrid = function() {
   // define grid by element
   var $grid = $('#grid');
   for(var i = 0; i < this.size; i++) {
@@ -49,7 +52,7 @@ Conway.prototype.renderGrid = function() {
   }
 };
 // // show grid by using a protype of the grid
-// // note: conway (object) has a bag of tools (prototype) and now has a new tool (show)
+// // note: grid (object) has a bag of tools (prototype) and now has a new tool (show)
 // // can also use just as a method
 // Conway.prototype.show = function () {
 //   // show every row on a new line
@@ -83,8 +86,12 @@ Conway.prototype.renderGrid = function() {
   - update nieghbors for cell
 */
 
+/*
+  HELPER METHODS
+*/
+
 // checks if cell is underpopulated
-Conway.prototype.isUnderpopulated = function(row, col) {
+Grid.prototype.isUnderpopulated = function(row, col) {
   // get cell
   var cell = this.grid[row][col];
   // returns true or false if cell's neighbors are less than 2
@@ -92,14 +99,14 @@ Conway.prototype.isUnderpopulated = function(row, col) {
 };
 
 // checks if cell overpopulated
-Conway.prototype.isOverpopulated = function(row, col) {
+Grid.prototype.isOverpopulated = function(row, col) {
   // get cell
   var cell = this.grid[row][col];
   // returns true or false if cell's neighbors are greater than 3
   return cell.neighbors > 3;
 };
 
-Conway.prototype.isResurrectable = function (row, col) {
+Grid.prototype.isResurrectable = function (row, col) {
   // get cell
   var cell = this.grid[row][col];
   // return true or false if cell is dead and has exactly 3 nieghbors
@@ -108,13 +115,18 @@ Conway.prototype.isResurrectable = function (row, col) {
 };
 
 // checks if in bounds
-Conway.prototype.isInBounds = function(row, col) {
+Grid.prototype.isInBounds = function(row, col) {
   return row >= 0 && row < this.size && col >= 0 && col < this.size;
 };
 
+/*
+  GRID METHOD ACTIONS
+*/
+
+
 // update one neighbor for one cell
 // will be used in the updateNeighborsForCell to update over everything
-Conway.prototype.updateNeighborsForCell =  function (row, col) {
+Grid.prototype.updateNeighborsForCell =  function (row, col) {
   var cell = this.grid[row][col];
   // reset the amount of neighbors
   cell.neighbors = 0;
@@ -134,7 +146,7 @@ Conway.prototype.updateNeighborsForCell =  function (row, col) {
   }
 };
 
-Conway.prototype.updateNeighbors = function () {
+Grid.prototype.updateNeighbors = function () {
   // iterate through the grid
   for(var i  = 0; i < this.size; i++) {
     for(var j = 0; j < this.size; j++) {
@@ -144,8 +156,8 @@ Conway.prototype.updateNeighbors = function () {
 };
 
 // updates the state of the cell
-// will becalled by updates to iterate the whole grid
-Conway.prototype.updateStateForCell = function(row, col) {
+// will be called by updates to iterate the whole grid
+Grid.prototype.updateStateForCell = function(row, col) {
   var cell = this.grid[row][col];
   // kill cell if it's underpopulated or overpopulated
   if(this.isUnderpopulated(row, col) || this.isOverpopulated(row, col)) {
@@ -156,7 +168,7 @@ Conway.prototype.updateStateForCell = function(row, col) {
 };
 
 // update states through out whole grid
-Conway.prototype.updateStates = function() {
+Grid.prototype.updateStates = function() {
   // iterate through the grid
   for(var i  = 0; i < this.size; i++) {
     for(var j = 0; j < this.size; j++) {

@@ -5,9 +5,12 @@ html, body {
 
 body {
   text-align: center;
-  font-family: "Roboto";
-  background: rgb(51, 51, 45);
-  color: rgb(255, 248, 227);
+  background: #656176;
+  color: white;
+}
+
+#gof {
+  color: white;
 }
 
 div {
@@ -41,7 +44,7 @@ h1 {
 }
 
 .alive {
-  background: rgb(204, 204, 159);
+  background: #CE5374;
 }
 
 /*.vertalign  {

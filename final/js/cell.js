@@ -1,3 +1,10 @@
+/*
+  THE CELL CLASS
+  TO INSTANCIATE THE CELLS AND FLAG IT TRUE OR FALSE
+  TO TRACK THE NUMBER OF NEIGHBORS IT HAS
+*/
+
+
 // the cell object
 function Cell () {
   // state flag - alive or not
