@@ -17,3 +17,5 @@ This application does:
 More information here: https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life
 
 Image of the application is in the in src repo
+
+![alt text](https://github.com/eelizan1/Conways_Game_of_Life/blob/master/gof.png)
